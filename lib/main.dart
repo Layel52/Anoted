@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lulu/cards_homePage/button_cards.dart';
-import 'package:lulu/cards_homePage/cards.dart';
+import 'package:lulu/homePage/home_page.dart';
+import 'package:lulu/recipe_page/racipe_home.dart';
+import 'package:lulu/safety/safety.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -18,47 +19,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        alignment: Alignment.topCenter,
-        color: Colors.black,
-        child: ListView(
-          children: [
-            Column(
-              children: [
-                const CardHome(imgUser: 'assets/eu.jpeg'),
-                Wrap(
-                  spacing: 54,
-                  children: const [
-                    ButtonCard(
-                        buttonCardImage: 'assets/comida.jpg',
-                        buttonCardTittle: 'Comida'),
-                    ButtonCard(
-                        buttonCardImage: 'assets/noted.gif',
-                        buttonCardTittle: 'anotado'),
-                    ButtonCard(
-                        buttonCardImage: 'assets/gato.jpg',
-                        buttonCardTittle: 'gatitos'),
-                    ButtonCard(
-                        buttonCardImage: 'assets/sunny.gif',
-                        buttonCardTittle: 'tempo'),
-                  ],
-                )
-              ],
-            )
-          ],
-        ),
-      ),
+      routes: {
+        '/': (_) => const PageSafety(),
+        '/homePage': (_) => const HomePage(),
+        '/recipe': (_) => const RecipeHome()
+      },
     );
   }
 }
